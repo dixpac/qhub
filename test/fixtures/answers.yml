@@ -1,0 +1,14 @@
+best_footballer_first_answer:
+  question: best_footballer
+  content: "Lionel Messi. Hand down."
+  creator: kramer
+
+best_footballer_second_answer:
+  question: best_footballer
+  content: "In my opinion Lionel Messi."
+  creator: elaine
+
+best_footballer_third_answer:
+  question: best_footballer
+  content: "I disagree with others, in my opionion it is Zinedine Zidane."
+  creator: george

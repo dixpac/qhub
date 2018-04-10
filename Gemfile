@@ -5,8 +5,8 @@ ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0.rc2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use PostgreSQL as the database for Active Record
+gem 'pg', '>= 1.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -28,6 +28,22 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'devise', '~> 4.4'
+
+gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0'
+gem 'font-awesome-sass', '~> 5.0.6'
+
+gem 'local_time'
+
+# Markdown sanitization dependencies
+gem 'html-pipeline', '~> 2.7'
+gem 'commonmarker'
+gem 'github-markdown', '~> 0.6.9'
+gem 'sanitize'
+
+gem 'kaminari', '~> 1.1.1'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

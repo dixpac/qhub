@@ -1,0 +1,19 @@
+jerry:
+  email: "jerry@example.org"
+  name: "Jerry Seinfeld"
+  encrypted_password: <%= default_password_digest %>
+
+kramer:
+  email: "kramer@example.org"
+  name: "Cosmo Kramer"
+  encrypted_password: <%= default_password_digest %>
+
+elaine:
+  email: "elaine@example.org"
+  name: "Elaine Benes"
+  encrypted_password: <%= default_password_digest %>
+
+george:
+  email: "george@example.org"
+  name: "George Constanza"
+  encrypted_password: <%= default_password_digest %>

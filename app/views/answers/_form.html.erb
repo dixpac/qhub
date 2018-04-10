@@ -1,0 +1,7 @@
+<%= form_with(model: [question, Current.user.answers.new], id: "answer-form", local: false) do |form| %>
+  <div class="form-group m-0 mb-1 border">
+    <%= form.text_field :content, data: { controller:  "markdown-editor" } %>
+  </div>
+
+  <%= form.submit "Post Your Answer", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,4 @@
+var answers = document.getElementById("answers");
+var form = document.getElementById("answer_form");
+
+answers.innerHTML += "<%= j render("answers/answer", answer: @answer) %>";

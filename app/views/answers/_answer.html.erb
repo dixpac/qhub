@@ -1,0 +1,10 @@
+<article id="<%= dom_id(answer) %>" class="media mb-2">
+  <div class="card card-body media-body">
+    <h6 class="mt-0">
+      <%= answer.creator.name %>
+      <small>posted at <%= local_time_ago(answer.created_at) %></small>
+    </h6>
+
+    <%= markdown answer.content %>
+  </div>
+</article>

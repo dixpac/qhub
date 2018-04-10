@@ -1,0 +1,16 @@
+<article id="<%= dom_id(@question) %>" class="media mb-2">
+  <div class="card card-body media-body">
+    <h3><%= @question.title %></h3>
+    <h6 class="mt-0 p-1 border-top border-bottom">
+      <%= @question.creator.name %>
+      <small>asked at <%= local_time_ago(@question.created_at) %></small>
+    </h6>
+    <%= markdown @question.content %>
+  </div>
+</article>
+
+<section id="answers">
+  <%= render @question.answers %>
+</section>
+
+<%= render "answers/form", question: @question %>
