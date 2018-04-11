@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise', '~> 4.4'
+gem 'omniauth-google-oauth2', '~> 0.5'
 
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
@@ -46,7 +47,7 @@ gem 'sanitize'
 gem 'kaminari', '~> 1.1.1'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
