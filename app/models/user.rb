@@ -15,16 +15,7 @@ class User < ApplicationRecord
     user = User.create!(email: attributes.info.email, name: attributes.info.name,
       password: Devise.friendly_token[0,20])
 
-    self.download_avatar_for user: user, attributes: attributes
-
+    FetchExternalUserAvatarJob.perform_later(user, attributes.info.image)
     user
-  end
-
-  # In order to avoid introducing BackgrundJob librares, this logic lives here.
-  def self.download_avatar_for(user:, attributes:)
-    return if attributes.info.image.empty?
-
-    require "open-uri"
-    user.avatar.attach(io: open(attributes.info.image), filename: "#{user.id}-avatar")
   end
 end

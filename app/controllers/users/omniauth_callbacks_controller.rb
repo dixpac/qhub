@@ -1,33 +1,27 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_action :redirect_to_root_if_user_is_logged_in
+
   before_action :set_service
   before_action :set_user
-
-  attr_reader :service, :user
+  before_action :update_or_create_oaut2_info
 
   def google_oauth2
     handle_auth "Google"
   end
 
-
   private
     def handle_auth(kind)
-      if service.present?
-        service.update(service_attrs)
-      else
-        user.oauth2_user_infos.create(service_attrs)
-      end
-
-      if user_signed_in?
-        redirect_to edit_user_registration_path
-      else
-        Current.user = user
-        sign_in_and_redirect user, event: :authentication
-        set_flash_message :notice, :success, kind: kind
-      end
+      Current.user = @user
+      sign_in_and_redirect @user, event: :authentication
+      set_flash_message :notice, :success, kind: kind
     end
 
     def auth
       request.env['omniauth.auth']
+    end
+
+    def redirect_to_root_if_user_is_logged_in
+      redirect_to root_path if Current.user
     end
 
     def set_service
@@ -35,14 +29,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     def set_user
-      if user_signed_in?
-        @user = current_user
-      elsif service.present?
-        @user = service.user
-      elsif User.where(email: auth.info.email).any?
-        # 5. User is logged out and they login to a new account which doesn't match their old one
-        flash[:alert] = "An account with this email already exists. Please sign in with that account before connecting your #{auth.provider.titleize} account."
-        redirect_to new_user_session_path
+      if @service.present?
+        @user = @service.user
       else
         @user = User.create_from_omniauth!(attributes: auth)
       end
@@ -59,16 +47,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       }
     end
 
-    def create_user
-      user = User.create(
-        email: auth.info.email,
-        name: auth.info.name,
-        password: Devise.friendly_token[0,20]
-      )
-
-      require "open-uri"
-      user.avatar.attach(io: open(auth.info.image), filename: "face.jpg")
-
-      user
+    def update_or_create_oaut2_info
+      if @service.present?
+        @service.update(service_attrs)
+      else
+        @user.oauth2_user_infos.create(service_attrs)
+      end
     end
 end

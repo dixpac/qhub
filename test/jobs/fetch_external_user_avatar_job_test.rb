@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DownloadAvatarFromOauthJobTest < ActiveJob::TestCase
+class FetchExternalUserAvatarJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end
