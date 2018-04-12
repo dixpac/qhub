@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-body">
+    <h3 class="card-title">Here are all records matching <%= params[:q] %></h3>
+
+    <ul class="list-unstyled">
+      <% @records.each do |record| %>
+        <%= render "search/#{record.class.to_s.underscore}", record: record %>
+      <% end %>
+    </ul>
+  </div>
+</div>

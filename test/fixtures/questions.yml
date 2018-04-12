@@ -2,3 +2,8 @@ best_footballer:
   title: "Who is the all time best footballer?"
   content: "In your opinion who is the best football player of all time"
   creator: jerry
+
+favourite_sitcom:
+  title: "Your favourite sitcome is?"
+  content: "Seinfeld is the best"
+  creator: jerry

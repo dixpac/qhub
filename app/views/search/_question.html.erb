@@ -1,0 +1,13 @@
+<li class="media border-bottom p-2">
+  <%= user_avatar record.creator, class: "mr-2" %>
+  <div class="media-body">
+    <p class="d-block m-0 text-muted">
+    <%= icon "fas", "question" %>
+    <small>Question</small>
+    </p>
+    <%= link_to record.title, record, class: "mt-o mb-1" %>
+    <small class="text-muted d-block">
+      <%= record.content %>
+    </small>
+  </div>
+</li>
