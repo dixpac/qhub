@@ -1,10 +1,14 @@
 <% if Current.user && Current.user.likes?(answer) %>
-  <%= link_to "Unlike", question_answer_likes_path(answer.question, answer), method: :delete, remote: true %>
+  <%= link_to question_answer_likes_path(answer.question, answer), method: :delete, remote: true do %>
+    <%= icon "fas", "heart" %>
+  <% end %>
 <% else %>
-  <%= link_to "Like", question_answer_likes_path(answer.question, answer), method: :post, remote: true %>
+  <%= link_to question_answer_likes_path(answer.question, answer), method: :post, remote: true do %>
+    <%= icon "far", "heart" %>
+  <% end %>
 <% end %>
 
-<%= answer.likes.count %>
+<%= answer.likes_count %>
 
 <% answer.likes.each do |like| %>
   <%= user_avatar like.creator, size: "20x20" %>
