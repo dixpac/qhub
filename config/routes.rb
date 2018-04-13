@@ -7,9 +7,16 @@ Rails.application.routes.draw do
 
   root "questions#index"
 
-  resources :questions do
+  concern :likable do
+    resource :likings
+  end
+
+  resources :answers, concerns: :likable
+
+  resources :questions, concerns: :likable do
     resources :answers
   end
+
 
   direct(:embeded_answer) do |answer|
     url_for [answer.question, anchor: "answer_#{answer.id}"]

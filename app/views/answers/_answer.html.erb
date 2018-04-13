@@ -7,5 +7,9 @@
     </h6>
 
     <%= markdown answer.content %>
+
+    <%= tag.div id: dom_id(answer, :likings) do %>
+      <%= render "likings/likings", likable: answer %>
+    <% end %>
   </div>
 </article>
