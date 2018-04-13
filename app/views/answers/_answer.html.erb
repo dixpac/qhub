@@ -8,8 +8,8 @@
 
     <%= markdown answer.content %>
 
-    <%= tag.div id: dom_id(answer, :likings) do %>
-      <%= render "likings/likings", likable: answer %>
+    <%= tag.div id: dom_id(answer, :likes) do %>
+      <%= render "answers/likes/likes", answer: answer %>
     <% end %>
   </div>
 </article>

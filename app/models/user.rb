@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :oauth2_user_infos, dependent: :destroy
   has_many :questions, foreign_key: "creator_id"
   has_many :answers, foreign_key: "creator_id"
+  has_many :likes, foreign_key: "creator_id"
 
   has_one_attached :avatar
 
@@ -19,7 +20,7 @@ class User < ApplicationRecord
     user
   end
 
-  def likes?(likable)
-    Liking.where(likable: likable, user: self).any?
+  def likes?(answer)
+    answer.likes.where(creator: self).any?
   end
 end

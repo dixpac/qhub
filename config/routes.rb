@@ -7,14 +7,10 @@ Rails.application.routes.draw do
 
   root "questions#index"
 
-  concern :likable do
-    resource :likings
-  end
-
-  resources :answers, concerns: :likable
-
-  resources :questions, concerns: :likable do
-    resources :answers
+  resources :questions do
+    resources :answers do
+      resource :likes, module: :answers
+    end
   end
 
 

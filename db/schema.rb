@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_13_104933) do
+ActiveRecord::Schema.define(version: 2018_04_13_125456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,14 +46,13 @@ ActiveRecord::Schema.define(version: 2018_04_13_104933) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
-  create_table "likings", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "likable_type"
-    t.bigint "likable_id"
+  create_table "likes", force: :cascade do |t|
+    t.bigint "creator_id", null: false
+    t.bigint "answer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["likable_type", "likable_id"], name: "index_likings_on_likable_type_and_likable_id"
-    t.index ["user_id"], name: "index_likings_on_user_id"
+    t.index ["answer_id"], name: "index_likes_on_answer_id"
+    t.index ["creator_id"], name: "index_likes_on_creator_id"
   end
 
   create_table "oauth2_user_infos", force: :cascade do |t|
@@ -99,6 +98,6 @@ ActiveRecord::Schema.define(version: 2018_04_13_104933) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "likings", "users"
+  add_foreign_key "likes", "answers"
   add_foreign_key "oauth2_user_infos", "users"
 end
