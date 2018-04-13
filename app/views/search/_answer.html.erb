@@ -7,7 +7,7 @@
     <%= icon "fas", "comments" %>
     <small>Answer</small>
     </p>
-    <%= link_to question.title, question, class: "mt-o mb-1" %>
+    <%= link_to question.title, embeded_answer_path(record), class: "mt-o mb-1" %>
     <small class="text-muted d-block">
       <%= record.content %>
     </small>

@@ -33,6 +33,7 @@ class UserSearchTest < ApplicationSystemTestCase
     assert_text answer.question.title
     assert_text answer.question.creator.name
     assert_equal page.current_path, question_path(answer.question)
+    assert page.current_url.match /#answer_#{answer.id}/
   end
 
   def perform_search_for(search_term:)

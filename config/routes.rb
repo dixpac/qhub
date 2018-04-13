@@ -11,5 +11,9 @@ Rails.application.routes.draw do
     resources :answers
   end
 
+  direct(:embeded_answer) do |answer|
+    url_for [answer.question, anchor: "answer_#{answer.id}"]
+  end
+
   resources :search, only: :index
 end
