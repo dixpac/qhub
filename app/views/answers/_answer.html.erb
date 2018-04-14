@@ -9,7 +9,7 @@
     <%= markdown answer.content %>
 
     <%= tag.div id: dom_id(answer, :likes) do %>
-      <%= render "answers/likes/likes", answer: answer %>
+      <%= render "likes/likes", likeable: answer %>
     <% end %>
   </div>
 </article>

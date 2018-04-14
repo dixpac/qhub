@@ -1,3 +1,8 @@
+jerry_likes_first_question:
+  liker: jerry
+  likeable: best_footballer (Question)
+
 jerry_likes_second_answer:
-  creator: jerry
-  answer: best_footballer_second_answer
+  liker: jerry
+  likeable: best_footballer_second_answer (Answer)
+

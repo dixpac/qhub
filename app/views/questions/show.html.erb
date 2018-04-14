@@ -7,6 +7,10 @@
       <small>asked at <%= local_time_ago(@question.created_at) %></small>
     </h6>
     <%= markdown @question.content %>
+
+    <%= tag.div id: dom_id(@question, :likes) do %>
+      <%= render "likes/likes", likeable: @question %>
+    <% end %>
   </div>
 </article>
 

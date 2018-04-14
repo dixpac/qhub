@@ -1,0 +1,15 @@
+<% if Like.liking?(liker: Current.user, likeable: likeable) %>
+  <%= link_to like_path_for(likeable), method: :delete, remote: true, data: { behaviour: "toggle_like" } do %>
+    <%= icon "fas", "heart" %>
+  <% end %>
+<% else %>
+  <%= link_to like_path_for(likeable), method: :post, remote: true, data: { behaviour: "toggle_like" } do %>
+    <%= icon "far", "heart" %>
+  <% end %>
+<% end %>
+
+<% likeable.likes.each do |like| %>
+  <%= tag.span id: dom_id(like) do %>
+    <%= user_avatar like.liker, size: "20x20" %>
+   <% end %>
+<% end %>

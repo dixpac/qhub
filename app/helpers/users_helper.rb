@@ -7,7 +7,7 @@ module UsersHelper
     options[:class] << " rounded-circle"
 
     image_tag user_avatar_url(user, options[:size]), class: options[:class],
-      id: dom_id(user), size: options[:size]
+      size: options[:size], title: user.name, data: { :avatar_for_user_id => user.id }
   end
 
   def user_avatar_url(user, size)

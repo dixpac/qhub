@@ -3,6 +3,7 @@ class Question < ApplicationRecord
 
   belongs_to :creator, class_name: "User", default: -> { Current.user }
   has_many :answers, dependent: :destroy
+  has_many :likes, as: :likeable
 
   validates :title, :content, presence: true
 

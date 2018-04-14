@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   root "questions#index"
 
   resources :questions do
-    resources :answers do
-      resource :likes, module: :answers
-    end
+    resources :answers
   end
 
+  post   'likes/:sgid', to: 'likes#create', as: :likes
+  delete 'likes/:sgid', to: 'likes#destroy'
 
   direct(:embeded_answer) do |answer|
     url_for [answer.question, anchor: "answer_#{answer.id}"]
