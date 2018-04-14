@@ -2,7 +2,7 @@ class Answers::LikesController < ApplicationController
   include AnswerScoped
 
   def create
-    @answer.likes.where(creator: Current.user).first_or_create
+    @answer.liked_by user: Current.user
 
     respond_to do |format|
       format.js { render "answers/likes/refresh" }
@@ -10,7 +10,7 @@ class Answers::LikesController < ApplicationController
   end
 
   def destroy
-    @answer.likes.where(creator: Current.user).destroy_all
+    @answer.unliked_by user: Current.user
 
     respond_to do |format|
       format.js { render "answers/likes/refresh" }

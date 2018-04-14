@@ -25,4 +25,8 @@ class AnswerTest < ActiveSupport::TestCase
     assert_empty results
     assert_kind_of Array, results
   end
+
+  test ".liked_by, adds user to list of answer likers" do
+    @best_footballer_second_answer.like_by creator: users(:jerry)
+  end
 end

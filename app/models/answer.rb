@@ -8,4 +8,12 @@ class Answer < ApplicationRecord
   validates :content, presence: true
 
   searchkick word_middle: [:content]
+
+  def gets_liked_by(user:)
+    likes.where(creator: user).first_or_create
+  end
+
+  def gets_unliked_by(user:)
+    likes.where(creator: user).first_or_create
+  end
 end
