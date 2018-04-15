@@ -4,6 +4,9 @@ import "simplemde/dist/simplemde.min.css"
 
 export default class extends Controller {
   connect() {
-    new SimpleMDE({ element: this.element })
+    new SimpleMDE({
+      element: this.element,
+      spellChecker: false
+    })
   }
 }

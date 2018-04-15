@@ -18,4 +18,6 @@
   <%= render @question.answers %>
 </section>
 
-<%= render "answers/form", question: @question %>
+<section class="media mb-2" id="new_answer">
+  <%= render "answers/form", question: @question %>
+</section>
