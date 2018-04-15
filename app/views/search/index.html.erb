@@ -1,6 +1,9 @@
 <div class="card">
   <div class="card-body">
-    <h3 class="card-title">Here are all records matching <%= params[:q] %></h3>
+    <h4 class="card-title">
+      Searching for
+      <span class="badge badge-pill badge-success"><%= params[:q] %></span>
+    </h4>
 
     <ul class="list-unstyled">
       <% @records.each do |record| %>

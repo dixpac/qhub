@@ -1,4 +1,15 @@
-<tr id="<%= dom_id(question) %>">
-  <td><%= link_to question.title, question %></td>
-  <td><strong><%= question.answers_count %></strong></td>
-</tr>
+<li class="media border-bottom p-2">
+  <%= user_avatar question.creator, class: "mr-2" %>
+  <div class="media-body">
+    <p class="d-block m-0 text-muted">
+    <%= tag.small "#{question.creator.name} asked" %>
+    </p>
+    <%= link_to question.title, question, class: "mt-o mb-1" %>
+    <small class="text-muted d-block">
+      <%= question.content %>
+    </small>
+    <span>
+    <span class="badge badge-light mt-2"><%= question.answers_count %> answers</span>
+  </button>
+  </div>
+</li>

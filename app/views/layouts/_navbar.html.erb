@@ -1,9 +1,14 @@
-<header class="navbar navbar-dark bg-primary navbar-expand-sm mb-3">
+<header class="navbar navbar-light bg-transparent navbar-expand-sm mb-3 border-bottom">
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav bd-navbar-nav flex-row">
 			<li class="nav-item">
-				<%= link_to  questions_path, class: "nav-link text-white" do %>
-					<%= icon('fas', 'inbox') %>
+				<%= link_to  new_question_path, class: "btn btn-success" do %>
+					<span>+ Ask Question</span>
+				<% end %>
+			</li>
+			<li class="nav-item">
+				<%= link_to  questions_path, class: "nav-link" do %>
+					<%= icon('fas', 'question-circle') %>
 					<span>Questions</span>
 				<% end %>
 			</li>
