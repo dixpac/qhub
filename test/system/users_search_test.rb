@@ -12,7 +12,7 @@ class UserSearchTest < ApplicationSystemTestCase
 
     perform_search_for search_term: search_term
 
-    assert_selector "h3", text: "Here are all records matching #{search_term}"
+    assert_text "Searching for #{search_term}"
 
     click_link question.title
 
@@ -26,7 +26,7 @@ class UserSearchTest < ApplicationSystemTestCase
     search_term = answer.content
     perform_search_for search_term: search_term
 
-    assert_selector "h3", text: "Here are all records matching #{search_term}"
+    assert_text "Searching for #{search_term}"
 
     click_link answer.question.title
 
@@ -38,6 +38,6 @@ class UserSearchTest < ApplicationSystemTestCase
 
   def perform_search_for(search_term:)
     fill_in "q", with: search_term
-    click_button "Search"
+    click_button "search"
   end
 end

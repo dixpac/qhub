@@ -8,8 +8,6 @@ class Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
       get user_google_oauth2_omniauth_callback_url
     end
     assert_redirected_to root_url
-    follow_redirect!
-    assert_select  "p", "Successfully authenticated from Google account."
   end
 
   test "can login with connected Google account" do
@@ -19,7 +17,5 @@ class Users::OmniauthCallbacksControllerTest < ActionDispatch::IntegrationTest
       get user_google_oauth2_omniauth_callback_url
     end
     assert_redirected_to root_url
-    follow_redirect!
-    assert_select  "p", "Successfully authenticated from Google account."
   end
 end

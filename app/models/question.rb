@@ -8,4 +8,8 @@ class Question < ApplicationRecord
   validates :title, :content, presence: true
 
   searchkick word_middle: [:title, :content]
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end
