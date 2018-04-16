@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_managing, only: [:edit, :update, :destroy]
 
   def index
     @questions = Question.reverse_chronologically.page params[:page]
@@ -13,6 +14,9 @@ class QuestionsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create
@@ -39,6 +43,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
+
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
       format.json { head :no_content }
@@ -48,6 +53,10 @@ class QuestionsController < ApplicationController
   private
     def set_question
       @question = Question.find(params[:id])
+    end
+
+    def authorize_managing
+      raise Guardian::NotAuthorizedError unless Guardian.new(Current.user, @question).can_manage?
     end
 
     def question_params

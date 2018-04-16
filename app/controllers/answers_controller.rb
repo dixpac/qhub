@@ -2,6 +2,7 @@ class AnswersController < ApplicationController
   include QuestionScoped
 
   before_action :set_answer, only: [:edit, :update]
+  before_action :authorize_managing, only: [:edit, :update, :destroy]
 
   def create
     @answer = @question.answers.new(answer_params)
@@ -34,6 +35,10 @@ class AnswersController < ApplicationController
   private
     def answer_params
       params.require(:answer).permit(:content)
+    end
+
+    def authorize_managing
+      raise Guardian::NotAuthorizedError unless Guardian.new(Current.user, @question).can_manage?
     end
 
     def set_answer

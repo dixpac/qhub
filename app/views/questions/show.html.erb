@@ -5,7 +5,7 @@
       <%= user_avatar @question.creator %>
       <%= @question.creator.name %>
       <small>asked at <%= local_time_ago(@question.created_at) %></small>
-      <%= link_to "Edit", edit_question_path(@question), class: "text-right" %>
+      <%= link_to "Edit", edit_question_path(@question), class: "text-right" if can_manage?(@question) %>
     </h6>
     <%= markdown @question.content %>
 

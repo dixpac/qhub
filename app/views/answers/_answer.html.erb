@@ -4,7 +4,7 @@
     <h6 class="mt-0">
       <%= answer.creator.name %>
       <small>posted at <%= local_time_ago(answer.created_at) %></small>
-      <%= link_to "Edit", edit_question_answer_path(@question, answer), remote: true %>
+      <%= link_to "Edit", edit_question_answer_path(@question, answer), remote: true if can_manage?(answer) %>
     </h6>
 
     <%= markdown answer.content %>
