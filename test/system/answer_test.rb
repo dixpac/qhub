@@ -6,6 +6,15 @@ class AnswerTest < ApplicationSystemTestCase
     visit questions_url
   end
 
+  test "User adds a answer to question" do
+    visit question_url questions(:best_footballer)
+    fill_in "answer_content", with: "New answer"
+
+    click_button "Post Your Answer"
+
+    assert_text "New answer"
+  end
+
   test "User can see who liked the question" do
     answer = answers(:best_footballer_second_answer)
 

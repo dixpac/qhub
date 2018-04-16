@@ -37,10 +37,7 @@ gem 'font-awesome-sass', '~> 5.0.6'
 gem 'local_time'
 
 # Markdown sanitization dependencies
-gem 'html-pipeline', '~> 2.7'
-gem 'commonmarker'
-gem 'github-markdown', '~> 0.6.9'
-gem 'sanitize'
+gem 'redcarpet'
 
 gem 'kaminari', '~> 1.1.1'
 

@@ -1,7 +1,7 @@
 <%= user_avatar Current.user, size: "24x24", class: "mr-1" %>
 <%= form_with(model: [question, answer], id: "answer-form", class: "media-body", local: false) do |form| %>
   <div class="form-group m-0 mb-1 border">
-    <%= form.text_field :content, data: { controller:  "markdown-editor" } %>
+    <%= form.text_area :content, rows: 5, class: "form-control", required: true %>
   </div>
 
   <%= form.submit "Post Your Answer", class: "btn btn-success" %>
