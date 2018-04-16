@@ -5,6 +5,7 @@
       <%= user_avatar @question.creator %>
       <%= @question.creator.name %>
       <small>asked at <%= local_time_ago(@question.created_at) %></small>
+      <%= link_to "Edit", edit_question_path(@question), class: "text-right" %>
     </h6>
     <%= markdown @question.content %>
 
@@ -19,5 +20,5 @@
 </section>
 
 <section class="media mb-2" id="new_answer">
-  <%= render "answers/form", question: @question %>
+  <%= render "answers/form", question: @question, answer: @question.answers.new %>
 </section>

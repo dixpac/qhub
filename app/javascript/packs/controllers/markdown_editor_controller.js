@@ -3,7 +3,7 @@ import * as SimpleMDE from "simplemde";
 import "simplemde/dist/simplemde.min.css"
 
 export default class extends Controller {
-  connect() {
+  initialize() {
     new SimpleMDE({
       element: this.element,
       spellChecker: false

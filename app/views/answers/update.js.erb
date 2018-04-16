@@ -1,0 +1,2 @@
+var answer = $("#answer_<%= @answer.id %>")
+answer.replaceWith("<%= j render("answers/answer", answer: @answer) %>");

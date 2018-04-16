@@ -1,0 +1,2 @@
+var answer = document.getElementById("answer_<%= @answer.id %>")
+answer.innerHTML = "<%= j render("answers/form", question: @question, answer: @answer) %>";

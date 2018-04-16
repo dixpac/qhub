@@ -1,5 +1,5 @@
 <%= user_avatar Current.user, size: "24x24", class: "mr-1" %>
-<%= form_with(model: [question, Current.user.answers.new], id: "answer-form", class: "media-body", local: false) do |form| %>
+<%= form_with(model: [question, answer], id: "answer-form", class: "media-body", local: false) do |form| %>
   <div class="form-group m-0 mb-1 border">
     <%= form.text_field :content, data: { controller:  "markdown-editor" } %>
   </div>
