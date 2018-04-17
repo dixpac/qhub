@@ -1,5 +1,6 @@
 <article id="<%= dom_id(answer) %>" class="media mb-2">
-  <%= user_avatar @question.creator, size: "24x24", class: "mr-1" %>
+  <%= user_avatar answer.creator, size: "24x24", class: "mr-1" %>
+
   <div class="card card-body media-body">
     <h6 class="mt-0">
       <%= answer.creator.name %>
