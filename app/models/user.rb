@@ -19,8 +19,4 @@ class User < ApplicationRecord
     FetchExternalUserAvatarJob.perform_later(user, attributes.info.image)
     user
   end
-
-  def likes?(answer)
-    answer.likes.where(creator: self).any?
-  end
 end
