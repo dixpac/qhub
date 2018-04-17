@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class QuestionsControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    @question = questions(:best_footballer)
+  end
+
   test "User can ask new question" do
     sign_in users(:jerry)
     get new_question_url
@@ -26,8 +30,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "User can edit his question" do
     sign_in users(:jerry)
-    question = questions(:best_footballer)
-    patch question_url(question), params: { question: { title: "new title" } }
+    patch question_url(@question), params: { question: { title: "new title" } }
 
     assert_response :redirect
     follow_redirect!
@@ -38,7 +41,22 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   test "User can't edit question if he is not creator" do
     sign_in users(:george)
     assert_raises Guardian::NotAuthorizedError do
-      get edit_question_url(questions(:best_footballer))
+      get edit_question_url(@question)
+    end
+  end
+
+  test "User can delete his question" do
+    sign_in users(:jerry)
+
+    delete question_url(@question)
+
+    assert_redirected_to questions_url
+  end
+
+  test "User can't delete other user question" do
+    sign_in users(:george)
+    assert_raises Guardian::NotAuthorizedError do
+      delete question_url(@question)
     end
   end
 
@@ -53,7 +71,12 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Guest can't edit question" do
-    get edit_question_url(questions(:best_footballer))
+    get edit_question_url(@question)
+    assert_redirected_to new_user_session_path
+  end
+
+  test "Guest can't delete question" do
+    delete question_url(@question)
     assert_redirected_to new_user_session_path
   end
 end

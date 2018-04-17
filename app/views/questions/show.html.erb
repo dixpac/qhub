@@ -5,7 +5,11 @@
       <%= user_avatar @question.creator %>
       <%= @question.creator.name %>
       <small>asked at <%= local_time_ago(@question.created_at) %></small>
-      <%= link_to "Edit", edit_question_path(@question), class: "text-right" if can_manage?(@question) %>
+
+      <div class="actions float-right">
+        <%= link_to "Edit", edit_question_path(@question), class: "text-right" if can_manage?(@question) %>
+        <%= link_to "Delete", question_path(@question), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-right" if can_manage?(@question) %>
+      </div>
     </h6>
     <%= markdown @question.content %>
 

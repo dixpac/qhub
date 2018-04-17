@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
   include QuestionScoped
 
-  before_action :set_answer, only: [:edit, :update]
+  before_action :set_answer, only: [:edit, :update, :destroy]
   before_action :authorize_managing, only: [:edit, :update, :destroy]
 
   def create
@@ -31,6 +31,15 @@ class AnswersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @answer.destroy
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 
   private
     def answer_params

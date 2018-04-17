@@ -189,6 +189,8 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.3)
     rack (2.0.4)
+    rack-mini-profiler (0.10.5)
+      rack (>= 1.2.0)
     rack-protection (2.0.1)
       rack
     rack-test (1.0.0)
@@ -308,6 +310,7 @@ DEPENDENCIES
   omniauth-google-oauth2 (~> 0.5)
   pg (>= 1.0.0)
   puma (~> 3.11)
+  rack-mini-profiler
   rails (~> 5.2.0.rc2)
   redcarpet
   sass-rails (~> 5.0)

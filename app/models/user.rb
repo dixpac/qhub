@@ -3,9 +3,9 @@ class User < ApplicationRecord
     :trackable, :validatable, :omniauthable
 
   has_many :oauth2_user_infos, dependent: :destroy
-  has_many :questions, foreign_key: "creator_id"
-  has_many :answers, foreign_key: "creator_id"
-  has_many :likes, foreign_key: "creator_id"
+  has_many :questions, foreign_key: "creator_id", dependent: :destroy
+  has_many :answers, foreign_key: "creator_id", dependent: :destroy
+  has_many :likes, foreign_key: "liker_id", dependent: :destroy
 
   has_one_attached :avatar
 

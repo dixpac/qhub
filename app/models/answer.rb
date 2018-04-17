@@ -3,7 +3,7 @@ class Answer < ApplicationRecord
 
   belongs_to :question, counter_cache: true
   belongs_to :creator, class_name: "User", default: -> { Current.user }
-  has_many :likes, as: :likeable
+  has_many :likes, as: :likeable, dependent: :destroy
 
   validates :content, presence: true
 

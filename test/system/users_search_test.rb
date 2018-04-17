@@ -2,6 +2,9 @@ require "application_system_test_case"
 
 class UserSearchTest < ApplicationSystemTestCase
   setup do
+    Question.reindex
+    Answer.reindex
+
     sign_in users(:jerry)
     visit root_url
   end
